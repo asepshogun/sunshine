@@ -1,0 +1,59 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity$PlaceholderFragment">
+
+    <!--
+    <TextView
+        android:id="@+id/today_weather_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/derajat_satu" />
+
+    <TextView
+        android:id="@+id/weather_besar_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/today_weather_textview"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="21" />
+
+    <TextView
+        android:id="@+id/weather_kecil_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weather_besar_textview"
+        android:layout_marginLeft="20dp"
+        android:text="8" />
+
+    <ImageView
+        android:id="@+id/weather_keadaan_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/weather_kecil_textview"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/weather_keadaan_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/weather_keadaan_imageview"
+        android:layout_marginLeft="175dp"
+        android:text="Cloudy" />
+    -->
+
+    <ListView
+        android:id="@+id/forecast_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</FrameLayout>
