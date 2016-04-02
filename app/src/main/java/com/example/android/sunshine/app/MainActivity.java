@@ -51,7 +51,7 @@ public class MainActivity extends ActionBarActivity {
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
-
+        //String yang akan dimasukan ke dalam listview
         String[] weathers = {
                 "Today - Sunny - 88 / 63",
                 "Monday - Sunny - 78 / 63",
@@ -74,16 +74,23 @@ public class MainActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-
+            //root view untuk menuju fragmen
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            //adapter untuk mengatur tampilan string ke dalam listview
 
+            /*1 elemen view menggunakan 1 adapter*/
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                    //referensi ke aktiviti yang sedang digunakan
                     getActivity(),
+                    //file layout yang akan dijadikan list view
                     R.layout.list_item_forecast,
+                    //id view dari elemen yang akan dijadikan list view
                     R.id.list_item_forecast_textview,
+                    //data string
                     weathers);
-
+            //referensi list view di fragment
             ListView listview = (ListView)rootView.findViewById(R.id.forecast_listview);
+            //menerapkan adapter ke dalam listview
             listview.setAdapter(adapter);
 
             return rootView;
