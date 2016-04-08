@@ -1,15 +1,9 @@
 package com.example.android.sunshine.app;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -20,7 +14,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new ForecastFragment())
                     .commit();
         }
     }
@@ -45,55 +39,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        //String yang akan dimasukan ke dalam listview
-        String[] weathers = {
-                "Today - Sunny - 88 / 63",
-                "Monday - Sunny - 78 / 63",
-                "Tuesday - Sunny - 83 / 63",
-                "Wednesday - Sunny - 84 / 63",
-                "Thursday - Sunny - 85 / 63",
-                "Friday - Sunny - 86 / 63",
-                "Saturday - Sunny - 87 / 63",
-                "Sunday - Sunny - 88 / 63",
-                "Monday - Sunny - 78 / 63",
-                "Tuesday - Sunny - 83 / 63",
-                "Wednesday - Sunny - 84 / 63",
-                "Thursday - Sunny - 85 / 63",
-                "Friday - Sunny - 86 / 63"
-        };
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            //root view untuk menuju fragmen
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            //adapter untuk mengatur tampilan string ke dalam listview
-
-            /*1 elemen view menggunakan 1 adapter*/
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    //referensi ke aktiviti yang sedang digunakan
-                    getActivity(),
-                    //file layout yang akan dijadikan list view
-                    R.layout.list_item_forecast,
-                    //id view dari elemen yang akan dijadikan list view
-                    R.id.list_item_forecast_textview,
-                    //data string
-                    weathers);
-            //referensi list view di fragment
-            ListView listview = (ListView)rootView.findViewById(R.id.forecast_listview);
-            //menerapkan adapter ke dalam listview
-            listview.setAdapter(adapter);
-
-            return rootView;
-        }
     }
 }
