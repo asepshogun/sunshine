@@ -50,6 +50,8 @@ public class ForecastFragment extends Fragment {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
+            FetchWeatherTask weatherTask = new FetchWeatherTask();
+            weatherTask.execute();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -106,7 +108,7 @@ public class ForecastFragment extends Fragment {
     }
 
     public class FetchWeatherTask extends AsyncTask<Void, Void, Void> {
-        
+
         // mengembalikan nama kelas, jadi ketika kelas di renami otomatis akan terename juga
         private final String LOG_TAG = FetchWeatherTask.class.getSimpleName();
 
@@ -158,6 +160,8 @@ public class ForecastFragment extends Fragment {
                     return null;
                 }
                 forecastJsonStr = buffer.toString();
+
+                Log.v(LOG_TAG, " Forecast JSON String " + forecastJsonStr);
             } catch (IOException e) {
                 Log.e("PlaceholderFragment", "Error ", e);
                 // If the code didn't successfully get the weather data, there's no point in attemping
