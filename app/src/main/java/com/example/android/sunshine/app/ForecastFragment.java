@@ -11,8 +11,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -110,9 +112,16 @@ public class ForecastFragment extends Fragment {
         //adapter untuk mengatur tampilan string ke dalam listview
         
         //referensi list view di fragment
-        ListView listview = (ListView)rootView.findViewById(R.id.forecast_listview);
+        final ListView listview = (ListView)rootView.findViewById(R.id.forecast_listview);
         //menerapkan adapter ke dalam listview
         listview.setAdapter(mForecastAdapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String forecast = (listview.getItemAtPosition(position).toString());
+                Toast.makeText(getActivity(), forecast, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return rootView;
     }
