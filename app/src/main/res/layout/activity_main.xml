@@ -1,3 +1,7 @@
+<!--
+File ini digunakan untuk menampilkan tampilan dari MainActivity
+disini menampilkan ForecastFragment
+-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"

@@ -1,3 +1,6 @@
+/*
+* Kelas MainActivty merupakan kelas utatma dari pryoyek shunshine
+** */
 package com.example.android.sunshine.app;
 
 import android.os.Bundle;
@@ -12,6 +15,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//      jika tampilan baru pertamakali dibuat
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new ForecastFragment())
@@ -19,6 +23,7 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
+    /*Prosedur untuk membut Option Menu*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -26,18 +31,17 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
+    /*Prosedur yang menangani handle pilihan pada option menu*/
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
