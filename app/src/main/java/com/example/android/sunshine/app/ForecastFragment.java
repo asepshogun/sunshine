@@ -31,8 +31,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -42,6 +40,12 @@ public class ForecastFragment extends Fragment {
     ArrayAdapter<String> mForecastAdapter;
 
     public ForecastFragment() {
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        updateWeather();
     }
 
     @Override
@@ -79,7 +83,9 @@ public class ForecastFragment extends Fragment {
         
         // Create some dummy data for the ListView.  Here's a sample weekly forecast
         // Data dummy yang akan diatambahkan ke dalam list view
-        String[] data = {
+
+        //Data dummy sudah tidak dibutuhkan
+        /*String[] data = {
                 "Today - Foggy - 88 / 63",
                 "Monday - Foggy - 78 / 63",
                 "Tuesday - Cloudy - 83 / 63",
@@ -93,9 +99,9 @@ public class ForecastFragment extends Fragment {
                 "Wednesday - Sunny - 84 / 63",
                 "Thursday - Rainy - 85 / 63",
                 "Friday - Stormy - 86 / 63"
-        };
+        };*/
 
-        List<String> weekForecast = new ArrayList<String>(Arrays.asList(data));
+        //List<String> weekForecast = new ArrayList<String>(Arrays.asList(data));
 
         // Now that we have some dummy forecast data, create an ArrayAdapter.
         // The ArrayAdapter will take data from a source (like our dummy forecast) and
@@ -110,7 +116,8 @@ public class ForecastFragment extends Fragment {
                 //id view elemen yang akan dijadikan list view
                 R.id.list_item_forecast_textview,
                 //data string
-                weekForecast);
+                //karena tidak menggunakan data dummy jadi langsung deklarasi Arraylist kosong
+                new ArrayList<String>());
 
         //root view untuk menuju fragmen
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
@@ -133,6 +140,13 @@ public class ForecastFragment extends Fragment {
         });
 
         return rootView;
+    }
+
+    public void updateWeather(){
+        FetchWeatherTask weatherTask = new FetchWeatherTask();
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String location = pref.getString(getString(R.string.pref_location_key), getString(R.string.pref_location_default));
+        weatherTask.execute(location);
     }
 
     public class FetchWeatherTask extends AsyncTask<String, Void, String[]> {
